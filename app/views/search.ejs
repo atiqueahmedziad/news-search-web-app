@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <%- include('templates/head'); -%>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  </head>
+  <body>
+    <%- include('templates/header'); -%>
+    <section class="section search-result" id="<%= pageId %>">
+      <div class="row">
+        <div class="col s12">
+          <% if(requests && requests.q) { %>
+          <h4 class="center-align">Search keyword: <%= requests.q %></h4>
+          <% } %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 cards-container">
+          <% content.articles && content.articles.forEach(item => { %>
+            <div class="card z-depth-3">
+              <div class="card-image">
+                <img src="<%= item.urlToImage %>">
+              </div>
+              <div class="card-title light-blue lighten-1"><%= item.title %></div>
+              <div class="card-content indigo lighten-5">
+                <div class="chip-container">
+                  <div class="chip deep-purple darken-4">
+                    <%= item.source.name %>
+                  </div>
+                  <% if(item.author) { %>
+                    <div class="chip cyan">
+                      Author: <%= item.author %>
+                    </div>
+                  <% } %>
+                </div>
+                <% if(item.content){ %>
+                  <p><%= item.content.split('[+')[0] %></p>
+                <% } else { %>
+                  <p><%= item.description %></p>
+                <% } %>
+              </div>
+              <div class="card-action blue-grey lighten-5">
+                <div class="date chip amber darken-4">
+                  <%= item.publishedAt.split('T')[0] %>
+                </div>
+                <a class="waves-effect indigo darken-4 btn-small right z-depth-3" target="_blank" href="<%= item.url %>">Visit this news</a>
+              </div>
+            </div>
+          <% }); %>
+        </div>
+
+      </div>
+    </section>
+    <%- include('templates/footer'); -%>
+    <script src="/js/materialize/materialize.min.js"></script>
+    <script src="/reload/reload.js"></script>
+  </body>
+</html>

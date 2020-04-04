@@ -1,0 +1,47 @@
+<html lang="en">
+  <head>
+    <%- include('templates/head'); -%>
+  </head>
+  <body>
+    <%- include('templates/header'); -%>
+    <section class="container api z-depth-3" id="<%= pageId %>">
+      <div class="row">
+        <div class="col s12 m10 offset-m1">
+          <div class="content-wrapper">
+            <div class="api-key-title">
+              <h4 class="center-align">Provide your API key</h4>
+            </div>
+            <div class="api-key-container">
+              <p class="center-align">
+                You need an API key to see the news.
+              </p>
+              <p class="center-align">Get your API key from <a target="_blank" href="https://newsapi.org/">newsapi.org</a>. Open an account and get an API key for testing purpose.</p>
+            </div>
+          </div>
+          <div id="error" class="center-align"></div>
+          <form id="api-key-form">
+            <div class="input-field">
+              <i class="material-icons prefix">vpn_key</i>
+              <input value="<%= apiKey %>"" type="text" id="api_key" placeholder="API key" requried>
+            </div>
+            <div class="input-field submit-button center">
+              <button type="submit" class="btn-large light-blue lighten-1 z-depth-3">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <%- include('templates/footer'); -%>
+
+    <script>
+      $(document).ready(function(){
+        $('.sidenav').sidenav();
+        $('.tooltipped').tooltip();
+      });
+    </script>
+
+    <script src="/js/api.js"></script>
+    <script src="js/materialize/materialize.min.js"></script>
+    <script src="/reload/reload.js"></script>
+  </body>
+  </html>
