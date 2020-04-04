@@ -9,7 +9,7 @@ router.get('/', function(req, res) {
   }
 
   res.render('index', {
-    pageTitle: 'Home',
+    pageTitle: 'Search for news',
     pageId: 'home'
   });
 });
