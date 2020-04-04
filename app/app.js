@@ -10,7 +10,7 @@ app.set('port', process.env.PORT || 4000 );
 app.set('view engine', 'ejs');
 app.set('views', 'app/views');
 
-app.locals.siteTitle = 'News Search Application';
+app.locals.siteTitle = 'News Search App';
 
 app.use(express.static('app/public'));
 app.use(cookieParser());
