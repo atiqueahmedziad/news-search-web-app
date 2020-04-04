@@ -18,7 +18,11 @@
           <% content.articles && content.articles.forEach(item => { %>
             <div class="card z-depth-3">
               <div class="card-image">
-                <img src="<%= item.urlToImage %>">
+                <% if(item.urlToImage) { %>
+                <img src="<%= item.urlToImage %>" />
+                <% } else { %>
+                <img src="/image/no-image.png" />
+                <% } %>
               </div>
               <div class="card-title light-blue lighten-1"><%= item.title %></div>
               <div class="card-content indigo lighten-5">
