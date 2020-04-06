@@ -244,11 +244,10 @@
     <%- include('templates/footer'); -%>
 
     <script>
-      $(document).ready(function(){
+      $(document).ready(() => {
         $('.sidenav').sidenav();
         $('.tabs').tabs();
         $('.datepicker').datepicker({
-          disableWeekends: true,
           yearRange: 1
         });
         $('select').formSelect();
@@ -257,7 +256,7 @@
     </script>
 
     <script src="/js/index.js"></script>
-    <script src="js/materialize/materialize.min.js"></script>
+    <script src="/js/materialize/materialize.min.js"></script>
     <script src="/reload/reload.js"></script>
   </body>
 </html>

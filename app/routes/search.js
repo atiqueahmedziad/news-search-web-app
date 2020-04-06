@@ -36,7 +36,7 @@ router.get('/search/all', async (req, res) => {
   requestObject.pageSize = req.query.page_size;
 
   Object.keys(requestObject)
-  .forEach(k => (!requestObject[k] && requestObject[k] !== undefined) && delete requestObject[k]);
+  .forEach(key => (!requestObject[key] && requestObject[key] !== undefined) && delete requestObject[key]);
 
   let getAllNews = await newsapi.v2.everything(requestObject).then(result => {
     return result;
