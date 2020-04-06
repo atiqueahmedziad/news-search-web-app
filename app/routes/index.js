@@ -1,8 +1,8 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-router.get('/', function(req, res) {
-  let verify = req.cookies['apiVerified'];
+router.get('/', (req, res) => {
+  const verify = req.cookies['apiVerified'];
   if(verify === 'false' || verify === undefined) {
     res.redirect('/api');
     return;
@@ -10,7 +10,7 @@ router.get('/', function(req, res) {
 
   res.render('index', {
     pageTitle: 'Search for news',
-    pageId: 'home'
+    pageId: 'search-for-news'
   });
 });
 

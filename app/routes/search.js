@@ -1,9 +1,9 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const NewsAPI = require('newsapi');
 
 router.get('/search/all', async (req, res) => {
-  let verify = req.cookies['apiVerified'];
+  const verify = req.cookies['apiVerified'];
   if(verify === 'false' || verify === undefined) {
     res.redirect('/api');
     return;
@@ -38,20 +38,23 @@ router.get('/search/all', async (req, res) => {
   Object.keys(requestObject)
   .forEach(k => (!requestObject[k] && requestObject[k] !== undefined) && delete requestObject[k]);
 
-  let getNews = await newsapi.v2.everything(requestObject).then(res => {
-    return res;
+  let getAllNews = await newsapi.v2.everything(requestObject).then(result => {
+    return result;
+  }).catch(error => {
+    console.log(error);
+    return;
   });
 
   res.render('search', {
     pageTitle: 'Search for all news',
     pageId: 'search',
-    content: getNews,
+    content: getAllNews,
     requests: requestObject
   });
 });
 
 router.get('/search/top', async (req, res) => {
-  let verify = req.cookies['apiVerified'];
+  const verify = req.cookies['apiVerified'];
   if(verify === 'false' || verify === undefined) {
     res.redirect('/api');
     return;
@@ -68,21 +71,21 @@ router.get('/search/top', async (req, res) => {
   requestObject.pageSize = req.query.pageSize;
 
   Object.keys(requestObject)
-  .forEach(k => (!requestObject[k] && requestObject[k] !== undefined) && delete requestObject[k]);
+  .forEach(key => (!requestObject[key] && requestObject[key] !== undefined) && delete requestObject[key]);
 
-  let getTopNews = newsapi.v2.topHeadlines(requestObject);
-
-  let allTopContent = await getTopNews.then(res => {
-    return res;
+  let getTopNews = await newsapi.v2.topHeadlines(requestObject).then(result => {
+    return result;
+  }).catch(error => {
+    console.log(error);
+    return;
   });
 
   res.render('search', {
     pageTitle: 'Search for Top News',
     pageId: 'search',
-    content: allTopContent,
+    content: getTopNews,
     requests: requestObject
   });
 });
-
 
 module.exports = router;
