@@ -22,7 +22,7 @@ const server = http.createServer(app);
 
 reload(app).then((reloadReturned) => {
   // reloadReturned is documented in the reload library documentation
-  server.listen(app.get('port'), function () {
+  server.listen(app.get('port'), () => {
     console.log('Web server listening on port ' + app.get('port'))
   });
 }).catch(error => {
