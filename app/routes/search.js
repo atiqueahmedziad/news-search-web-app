@@ -35,8 +35,7 @@ router.get('/search/all', async (req, res) => {
   requestObject.sortBy = req.query.sort_by;
   requestObject.pageSize = req.query.page_size;
 
-  Object.keys(requestObject)
-  .forEach(key => (!requestObject[key] && requestObject[key] !== undefined) && delete requestObject[key]);
+  Object.keys(requestObject).forEach(key => (!requestObject[key] && requestObject[key] !== undefined) && delete requestObject[key]);
 
   let getAllNews = await newsapi.v2.everything(requestObject).then(result => {
     return result;
@@ -70,8 +69,7 @@ router.get('/search/top', async (req, res) => {
   requestObject.category = req.query.category;
   requestObject.pageSize = req.query.pageSize;
 
-  Object.keys(requestObject)
-  .forEach(key => (!requestObject[key] && requestObject[key] !== undefined) && delete requestObject[key]);
+  Object.keys(requestObject).forEach(key => (!requestObject[key] && requestObject[key] !== undefined) && delete requestObject[key]);
 
   let getTopNews = await newsapi.v2.topHeadlines(requestObject).then(result => {
     return result;

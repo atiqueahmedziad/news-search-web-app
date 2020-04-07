@@ -1,12 +1,12 @@
 'use strict'
 
 const express = require('express');
-const cookieParser = require('cookie-parser')
-const http = require('http')
+const cookieParser = require('cookie-parser');
+const http = require('http');
 const reload = require('reload');
 const app = express();
 
-app.set('port', process.env.PORT || 4000 );
+app.set('port', process.env.PORT || 4000);
 app.set('view engine', 'ejs');
 app.set('views', 'app/views');
 
@@ -20,7 +20,7 @@ app.use(require('./routes/api'));
 
 const server = http.createServer(app);
 
-reload(app).then((reloadReturned) => {
+reload(app).then(reloadReturned => {
   // reloadReturned is documented in the reload library documentation
   server.listen(app.get('port'), () => {
     console.log('Web server listening on port ' + app.get('port'))
