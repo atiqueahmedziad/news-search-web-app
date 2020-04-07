@@ -51,4 +51,4 @@ If you are a first time contributor, I would recommand to pick a [good first iss
 Feel free to submit pull request when you make a patch for any issue.
 
 ## How to get help
-If you face any issue with building the web application in your pc or working on it, feel free to send me a hi at [hi@atique.xyz](mailto:hi@atique.xyz)
+If you face any issue with building the web application in your pc or working on it, feel free to send me a hi at hi@atique.xyz
