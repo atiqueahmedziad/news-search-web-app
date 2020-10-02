@@ -1,6 +1,12 @@
+const emptyApiKeyError = '<p class="red-text red-darken-4">Please Enter API Key</p>';
+
 $('#api-key-form').submit(e => {
   e.preventDefault();
   const apiKey = $('#api_key').val();
+  if($.trim(apiKey) == ''){
+    $('#error').html(emptyApiKeyError);
+    return false;
+  }
   $('#error').html(`<p>Checking...</p>`);
   $.post('/checkApi', {apiKey}, checkValid);
 });
